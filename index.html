@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEYRA × Swati's Collection</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#faf9f7;color:#222}
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:5}
+.nav{max-width:1150px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;letter-spacing:3px;font-weight:700}.sub{font-size:10px;letter-spacing:2px;color:#777}
+nav a{margin-left:20px;text-decoration:none;color:#333;font-size:14px}
+.hero{max-width:1150px;margin:25px auto;padding:55px 30px;border-radius:18px;background:linear-gradient(120deg,#eee8e1,#fff);display:flex;align-items:center;justify-content:space-between;gap:25px}
+.hero h1{font-size:52px;margin:5px 0}.hero p{font-size:18px;color:#666;max-width:520px;line-height:1.6}
+.btn{display:inline-block;background:#222;color:#fff;padding:13px 22px;border-radius:25px;text-decoration:none;border:0;cursor:pointer}
+.section{max-width:1150px;margin:45px auto;padding:0 20px}.section h2{text-align:center;font-size:28px}
+.tabs{text-align:center;margin:20px}.tab{padding:10px 18px;border:1px solid #ddd;background:white;border-radius:20px;margin:5px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border:1px solid #eee;border-radius:15px;overflow:hidden}.pic{height:250px;background:#eee;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px}
+.info{padding:15px}.info h3{margin:0 0 7px;font-size:16px}.price{font-weight:bold}.add{width:100%;margin-top:12px}
+.badge{font-size:10px;letter-spacing:1px;color:#777;text-transform:uppercase}
+.about{background:#fff;padding:30px;border-radius:15px;line-height:1.7;color:#555}
+footer{margin-top:60px;background:#222;color:#fff;padding:35px 20px;text-align:center}
+.cart{position:fixed;right:20px;bottom:20px;background:#222;color:#fff;padding:14px 18px;border-radius:30px;box-shadow:0 5px 20px #0003}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.hero{margin:15px;padding:35px 20px}.hero h1{font-size:38px}nav{display:none}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.pic{height:280px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div><div class="logo">VEYRA</div><div class="sub">FASHION • EVERYDAY LUXURY</div></div>
+<nav><a href="#shop">Shop</a><a href="#jewellery">Jewellery</a><a href="#about">About</a></nav>
+</div></header>
+
+<section class="hero">
+<div><div class="badge">New collection</div><h1>Wear your vibe.</h1>
+<p>Premium-looking hoodies and everyday jewellery, curated for modern style. Discover VEYRA fashion and Swati's Collection jewellery.</p>
+<a class="btn" href="#shop">Shop Now</a></div>
+<div style="font-size:90px">✦</div>
+</section>
+
+<section class="section" id="shop">
+<h2>Featured Collection</h2>
+<div class="tabs">
+<button class="tab" onclick="filter('all')">All</button>
+<button class="tab" onclick="filter('hoodie')">Hoodies</button>
+<button class="tab" onclick="filter('jewellery')">Jewellery</button>
+</div>
+<div class="grid" id="products"></div>
+</section>
+
+<section class="section" id="about"><h2>About Us</h2>
+<div class="about"><b>VEYRA</b> brings clean, comfortable and stylish clothing for everyday wear.
+<br><br><b>Swati's Collection</b> brings elegant fashion jewellery designed to make everyday outfits feel special.
+<br><br>We offer <b>COD and online payment</b>. Product availability, shipping time and return eligibility will be shown on the final live store.</div>
+</section>
+
+<footer>
+<div style="font-size:20px;letter-spacing:2px">VEYRA × SWATI'S COLLECTION</div>
+<p>© 2026 All rights reserved.</p>
+<p style="font-size:12px;color:#bbb">Replace this demo contact, policies, prices and payment-gateway details before publishing.</p>
+</footer>
+
+<div class="cart">🛍 Cart: <span id="count">0</span></div>
+
+<script>
+const products=[
+{name:"Classic Oversized Hoodie",brand:"VEYRA",type:"hoodie",price:899},
+{name:"Minimal Black Hoodie",brand:"VEYRA",type:"hoodie",price:999},
+{name:"Signature Everyday Hoodie",brand:"VEYRA",type:"hoodie",price:1099},
+{name:"Premium Street Hoodie",brand:"VEYRA",type:"hoodie",price:1199},
+{name:"Elegant Alloy Bracelet",brand:"Swati's Collection",type:"jewellery",price:599},
+{name:"Classic Fashion Bracelet",brand:"Swati's Collection",type:"jewellery",price:649},
+{name:"Statement Jewellery Set",brand:"Swati's Collection",type:"jewellery",price:799},
+{name:"Daily Wear Jewellery Set",brand:"Swati's Collection",type:"jewellery",price:699}
+];
+let count=0;
+function render(type='all'){
+const box=document.getElementById('products');
+box.innerHTML=products.filter(p=>type==='all'||p.type===type).map((p,i)=>`
+<div class="card"><div class="pic">Product Photo</div><div class="info">
+<div class="badge">${p.brand}</div><h3>${p.name}</h3><div class="price">₹${p.price.toLocaleString('en-IN')}</div>
+<button class="btn add" onclick="add()">Add to Cart</button></div></div>`).join('');
+}
+function filter(type){render(type)}
+function add(){count++;document.getElementById('count').textContent=count;alert('Product added to cart. Connect your payment/cart system before launch.')}
+render();
+</script>
+</body>
+</html>
