@@ -1,214 +1,381 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VEYRA × Swati's Collection</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+let products = [
 
-<body>
+  {
+    name:"Premium Suit",
+    category:"Suits",
+    price:null
+  },
 
-<header class="header">
-  <a href="#" class="logo">VEYRA <span>×</span> SWATI'S COLLECTION</a>
+  {
+    name:"Classic Hoodie",
+    category:"Hoodies",
+    price:null
+  },
 
-  <button class="cart-btn" onclick="openCart()">
-    Cart <b id="cartCount">0</b>
-  </button>
-</header>
+  {
+    name:"Premium T-Shirt",
+    category:"T-Shirts",
+    price:null
+  },
 
-<section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">NEW COLLECTION</p>
+  {
+    name:"Classic Sweatshirt",
+    category:"Sweatshirts",
+    price:null
+  },
 
-    <h1>
-      Style that feels
-      <span>uniquely yours.</span>
-    </h1>
+  {
+    name:"Elegant Saree",
+    category:"Saree",
+    price:null
+  },
 
-    <p>
-      Discover stylish clothing and beautiful jewellery
-      curated for everyday elegance.
-    </p>
+  {
+    name:"Classic Cap",
+    category:"Caps",
+    price:null
+  },
 
-    <a href="#shop" class="hero-btn">Shop Now</a>
-  </div>
-</section>
+  {
+    name:"Elegant Necklace",
+    category:"Necklace",
+    price:null
+  },
 
-<main id="shop">
+  {
+    name:"Designer Earrings",
+    category:"Earrings",
+    price:null
+  },
 
-  <!-- CLOTHING -->
+  {
+    name:"Fashion Ring",
+    category:"Rings",
+    price:null
+  },
 
-  <section class="category-section">
+  {
+    name:"Fashion Bracelet",
+    category:"Bracelets",
+    price:null
+  },
 
-    <h2>Clothing</h2>
+  {
+    name:"Designer Bangles",
+    category:"Bangles",
+    price:null
+  },
 
-    <div class="category-grid">
+  {
+    name:"Elegant Mangalsutra",
+    category:"Mangalsutra",
+    price:null
+  },
 
-      <div class="category-card" onclick="showCategory('Suits')">
-        <div class="icon">👗</div>
-        <p>Suits</p>
+  {
+    name:"Designer Anklets",
+    category:"Anklets",
+    price:null
+  },
+
+  {
+    name:"Nose Pin",
+    category:"Nose Pins",
+    price:null
+  },
+
+  {
+    name:"Maang Tikka",
+    category:"Maang Tikka",
+    price:null
+  },
+
+  {
+    name:"Jewellery Set",
+    category:"Jewellery Sets",
+    price:null
+  }
+
+];
+
+
+let cart=[];
+
+
+/* SHOW PRODUCTS */
+
+function renderProducts(category="All"){
+
+  const grid=document.getElementById("productGrid");
+
+  const title=document.getElementById("productTitle");
+
+  let list=products;
+
+  if(category!=="All"){
+
+    list=products.filter(
+      product=>product.category===category
+    );
+
+    title.textContent=category;
+
+  }else{
+
+    title.textContent="Featured Products";
+
+  }
+
+
+  grid.innerHTML="";
+
+
+  list.forEach((product,index)=>{
+
+    const card=document.createElement("div");
+
+    card.className="product-card";
+
+
+    card.innerHTML=`
+
+      <div class="product-photo">
+
+        Product Photo<br>
+        will be added here
+
       </div>
 
-      <div class="category-card" onclick="showCategory('Hoodies')">
-        <div class="icon">🧥</div>
-        <p>Hoodies</p>
+
+      <div class="product-info">
+
+        <h3>${product.name}</h3>
+
+        <div class="product-category">
+          ${product.category}
+        </div>
+
+        <div class="price">
+
+          ${
+            product.price
+            ? "₹"+product.price
+            : "Price Coming Soon"
+          }
+
+        </div>
+
+
+        <button
+
+          class="add-cart"
+
+          onclick="addToCart(${index})"
+
+          ${
+            product.price===null
+            ? "disabled style='opacity:.45;cursor:not-allowed'"
+            : ""
+          }
+
+        >
+
+          ${
+            product.price
+            ? "ADD TO CART"
+            : "COMING SOON"
+          }
+
+        </button>
+
       </div>
 
-      <div class="category-card" onclick="showCategory('T-Shirts')">
-        <div class="icon">👕</div>
-        <p>T-Shirts</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Sweatshirts')">
-        <div class="icon">🧥</div>
-        <p>Sweatshirts</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Saree')">
-        <div class="icon">🥻</div>
-        <p>Saree</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Caps')">
-        <div class="icon">🧢</div>
-        <p>Caps</p>
-      </div>
-
-    </div>
-
-  </section>
+    `;
 
 
-  <!-- JEWELLERY -->
+    grid.appendChild(card);
 
-  <section class="category-section">
+  });
 
-    <h2>Jewellery</h2>
-
-    <div class="category-grid">
-
-      <div class="category-card" onclick="showCategory('Necklace')">
-        <div class="icon">📿</div>
-        <p>Necklace</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Earrings')">
-        <div class="icon">💎</div>
-        <p>Earrings</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Rings')">
-        <div class="icon">💍</div>
-        <p>Rings</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Bracelets')">
-        <div class="icon">✨</div>
-        <p>Bracelets</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Bangles')">
-        <div class="icon">⭕</div>
-        <p>Bangles</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Mangalsutra')">
-        <div class="icon">📿</div>
-        <p>Mangalsutra</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Anklets')">
-        <div class="icon">✨</div>
-        <p>Anklets</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Nose Pins')">
-        <div class="icon">💠</div>
-        <p>Nose Pins</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Maang Tikka')">
-        <div class="icon">👑</div>
-        <p>Maang Tikka</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Jewellery Sets')">
-        <div class="icon">💎</div>
-        <p>Jewellery Sets</p>
-      </div>
-
-    </div>
-
-  </section>
+}
 
 
-  <!-- PRODUCTS -->
+/* CATEGORY */
 
-  <section class="products-section">
+function showCategory(category){
 
-    <div class="section-heading">
+  renderProducts(category);
 
-      <div>
-        <h2>Our Products</h2>
-        <p>Product photos and prices will be added soon.</p>
-      </div>
+  document
+    .querySelector(".products")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
-    </div>
-
-    <div class="product-grid" id="productGrid"></div>
-
-  </section>
-
-</main>
+}
 
 
-<!-- CART -->
+/* CART */
 
-<div class="cart-panel" id="cartPanel">
+function addToCart(index){
 
-  <div class="cart-header">
+  const product=products[index];
 
-    <h2>Your Cart</h2>
+  if(!product.price){
 
-    <button onclick="closeCart()">×</button>
+    return;
 
-  </div>
+  }
 
-  <div id="cartItems"></div>
+  cart.push(product);
 
-  <div class="cart-footer">
+  updateCart();
 
-    <strong>
-      Total: ₹<span id="cartTotal">0</span>
-    </strong>
+  openCart();
 
-    <button class="checkout-btn" onclick="checkout()">
-      Checkout
-    </button>
-
-  </div>
-
-</div>
+}
 
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
+function removeFromCart(index){
+
+  cart.splice(index,1);
+
+  updateCart();
+
+}
 
 
-<!-- FOOTER -->
+function updateCart(){
 
-<footer>
-
-  <h3>VEYRA × Swati's Collection</h3>
-
-  <p>Fashion • Jewellery • Style</p>
-
-  <p>© 2026 All Rights Reserved</p>
-
-</footer>
+  document.getElementById("cartCount")
+    .textContent=cart.length;
 
 
-<script src="script.js"></script>
+  const items=
+    document.getElementById("cartItems");
 
-</body>
-</html>
+
+  if(cart.length===0){
+
+    items.innerHTML=`
+
+      <p style="
+        color:#999;
+        padding:25px 0;
+      ">
+
+        Your cart is empty.
+
+      </p>
+
+    `;
+
+  }else{
+
+    items.innerHTML="";
+
+
+    cart.forEach((product,index)=>{
+
+      items.innerHTML+=`
+
+        <div class="cart-item">
+
+          <div>
+
+            <strong>
+              ${product.name}
+            </strong>
+
+            <br>
+
+            ₹${product.price}
+
+          </div>
+
+
+          <button
+
+            class="remove"
+
+            onclick="removeFromCart(${index})"
+
+          >
+
+            Remove
+
+          </button>
+
+        </div>
+
+      `;
+
+    });
+
+  }
+
+
+  const total=cart.reduce(
+
+    (sum,product)=>
+      sum+Number(product.price),
+
+    0
+
+  );
+
+
+  document.getElementById("cartTotal")
+    .textContent=total;
+
+}
+
+
+/* OPEN CART */
+
+function openCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+
+  document
+    .getElementById("overlay")
+    .classList.remove("show");
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+  alert(
+    "Checkout, COD and Online Payment will be added after products and prices are finalized."
+  );
+
+}
+
+
+/* START */
+
+renderProducts();
+
+updateCart();
