@@ -1,214 +1,434 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VEYRA × Swati's Collection</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#171717;
+  background:#fff;
+}
+
+
+/* HEADER */
+
+header{
+  height:75px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:100;
+}
+
+.logo{
+  font-size:15px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.logo span{
+  font-weight:normal;
+  margin:0 7px;
+}
+
+.cart-button{
+  border:0;
+  background:#171717;
+  color:#fff;
+  padding:11px 19px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.cart-button span{
+  background:#fff;
+  color:#111;
+  padding:3px 7px;
+  border-radius:50%;
+  margin-left:5px;
+}
+
+
+/* HERO */
+
+.hero{
+  min-height:600px;
+  display:flex;
+  align-items:center;
+  padding:80px 8%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f2eee8 0%,
+      #f8f6f3 50%,
+      #fff 100%
+    );
+}
+
+.hero-text{
+  max-width:650px;
+}
+
+.hero-text small{
+  letter-spacing:4px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.hero-text h1{
+  font-size:clamp(50px,8vw,90px);
+  line-height:.98;
+  margin:20px 0;
+}
+
+.hero-text h1 i{
+  font-weight:normal;
+}
+
+.hero-text p{
+  max-width:500px;
+  line-height:1.7;
+  color:#666;
+  font-size:17px;
+}
 
-<body>
+.hero-text a{
+  display:inline-block;
+  margin-top:30px;
+  padding:15px 27px;
+  background:#171717;
+  color:white;
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:1px;
+}
 
-<header class="header">
-  <a href="#" class="logo">VEYRA <span>×</span> SWATI'S COLLECTION</a>
 
-  <button class="cart-btn" onclick="openCart()">
-    Cart <b id="cartCount">0</b>
-  </button>
-</header>
+/* SECTIONS */
 
-<section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">NEW COLLECTION</p>
+.section{
+  padding:80px 6%;
+}
 
-    <h1>
-      Style that feels
-      <span>uniquely yours.</span>
-    </h1>
+.title{
+  text-align:center;
+  margin-bottom:40px;
+}
 
-    <p>
-      Discover stylish clothing and beautiful jewellery
-      curated for everyday elegance.
-    </p>
+.title p{
+  font-size:11px;
+  letter-spacing:3px;
+  color:#999;
+  margin-bottom:8px;
+}
 
-    <a href="#shop" class="hero-btn">Shop Now</a>
-  </div>
-</section>
+.title h2{
+  font-size:36px;
+}
 
-<main id="shop">
 
-  <!-- CLOTHING -->
+/* CATEGORY */
 
-  <section class="category-section">
+.categories{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(145px,1fr));
 
-    <h2>Clothing</h2>
+  gap:18px;
+}
 
-    <div class="category-grid">
+.category{
+  min-height:145px;
 
-      <div class="category-card" onclick="showCategory('Suits')">
-        <div class="icon">👗</div>
-        <p>Suits</p>
-      </div>
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 
-      <div class="category-card" onclick="showCategory('Hoodies')">
-        <div class="icon">🧥</div>
-        <p>Hoodies</p>
-      </div>
+  background:#faf9f7;
 
-      <div class="category-card" onclick="showCategory('T-Shirts')">
-        <div class="icon">👕</div>
-        <p>T-Shirts</p>
-      </div>
+  border:1px solid #eee;
 
-      <div class="category-card" onclick="showCategory('Sweatshirts')">
-        <div class="icon">🧥</div>
-        <p>Sweatshirts</p>
-      </div>
+  cursor:pointer;
 
-      <div class="category-card" onclick="showCategory('Saree')">
-        <div class="icon">🥻</div>
-        <p>Saree</p>
-      </div>
+  transition:.25s;
+}
 
-      <div class="category-card" onclick="showCategory('Caps')">
-        <div class="icon">🧢</div>
-        <p>Caps</p>
-      </div>
+.category:hover{
+  transform:translateY(-6px);
+  border-color:#222;
+  box-shadow:0 10px 25px #00000012;
+}
 
-    </div>
+.category span{
+  font-size:35px;
+  margin-bottom:13px;
+}
 
-  </section>
+.category h3{
+  font-size:15px;
+  font-weight:500;
+}
 
 
-  <!-- JEWELLERY -->
+/* JEWELLERY */
 
-  <section class="category-section">
+.jewellery-section{
+  background:#faf9f7;
+}
 
-    <h2>Jewellery</h2>
+.jewellery-section .category{
+  background:white;
+}
 
-    <div class="category-grid">
 
-      <div class="category-card" onclick="showCategory('Necklace')">
-        <div class="icon">📿</div>
-        <p>Necklace</p>
-      </div>
+/* PRODUCTS */
 
-      <div class="category-card" onclick="showCategory('Earrings')">
-        <div class="icon">💎</div>
-        <p>Earrings</p>
-      </div>
+.products{
+  background:#fff;
+}
 
-      <div class="category-card" onclick="showCategory('Rings')">
-        <div class="icon">💍</div>
-        <p>Rings</p>
-      </div>
+.product-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
 
-      <div class="category-card" onclick="showCategory('Bracelets')">
-        <div class="icon">✨</div>
-        <p>Bracelets</p>
-      </div>
+  gap:25px;
+}
 
-      <div class="category-card" onclick="showCategory('Bangles')">
-        <div class="icon">⭕</div>
-        <p>Bangles</p>
-      </div>
+.product-card{
+  border:1px solid #eee;
+  background:white;
+  overflow:hidden;
+}
 
-      <div class="category-card" onclick="showCategory('Mangalsutra')">
-        <div class="icon">📿</div>
-        <p>Mangalsutra</p>
-      </div>
+.product-photo{
+  height:280px;
 
-      <div class="category-card" onclick="showCategory('Anklets')">
-        <div class="icon">✨</div>
-        <p>Anklets</p>
-      </div>
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-      <div class="category-card" onclick="showCategory('Nose Pins')">
-        <div class="icon">💠</div>
-        <p>Nose Pins</p>
-      </div>
+  background:#f5f5f5;
 
-      <div class="category-card" onclick="showCategory('Maang Tikka')">
-        <div class="icon">👑</div>
-        <p>Maang Tikka</p>
-      </div>
+  color:#999;
 
-      <div class="category-card" onclick="showCategory('Jewellery Sets')">
-        <div class="icon">💎</div>
-        <p>Jewellery Sets</p>
-      </div>
+  text-align:center;
+  font-size:13px;
+}
 
-    </div>
+.product-info{
+  padding:20px;
+}
 
-  </section>
+.product-info h3{
+  font-size:17px;
+  margin-bottom:8px;
+}
 
+.product-category{
+  color:#999;
+  font-size:12px;
+  margin-bottom:12px;
+}
 
-  <!-- PRODUCTS -->
+.price{
+  font-weight:bold;
+  margin-bottom:15px;
+}
 
-  <section class="products-section">
+.add-cart{
+  width:100%;
+  padding:12px;
 
-    <div class="section-heading">
+  background:#171717;
+  color:white;
 
-      <div>
-        <h2>Our Products</h2>
-        <p>Product photos and prices will be added soon.</p>
-      </div>
+  border:0;
 
-    </div>
+  cursor:pointer;
+}
 
-    <div class="product-grid" id="productGrid"></div>
 
-  </section>
+/* FOOTER */
 
-</main>
+footer{
+  background:#171717;
+  color:white;
+  text-align:center;
+  padding:55px 20px;
+}
 
+.footer-logo{
+  font-weight:bold;
+  letter-spacing:2px;
+  margin-bottom:12px;
+}
 
-<!-- CART -->
+footer p{
+  color:#aaa;
+  margin-bottom:12px;
+}
 
-<div class="cart-panel" id="cartPanel">
+footer small{
+  color:#666;
+}
 
-  <div class="cart-header">
 
-    <h2>Your Cart</h2>
+/* CART */
 
-    <button onclick="closeCart()">×</button>
+.overlay{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:200;
+  display:none;
+}
 
-  </div>
+.overlay.show{
+  display:block;
+}
 
-  <div id="cartItems"></div>
+.cart-panel{
+  position:fixed;
+  right:-430px;
+  top:0;
 
-  <div class="cart-footer">
+  width:min(410px,92vw);
+  height:100vh;
 
-    <strong>
-      Total: ₹<span id="cartTotal">0</span>
-    </strong>
+  background:white;
 
-    <button class="checkout-btn" onclick="checkout()">
-      Checkout
-    </button>
+  z-index:300;
 
-  </div>
+  padding:25px;
 
-</div>
+  display:flex;
+  flex-direction:column;
 
+  transition:.3s;
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
+  box-shadow:-10px 0 30px #0003;
+}
 
+.cart-panel.open{
+  right:0;
+}
 
-<!-- FOOTER -->
+.cart-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-<footer>
+  border-bottom:1px solid #eee;
 
-  <h3>VEYRA × Swati's Collection</h3>
+  padding-bottom:18px;
+}
 
-  <p>Fashion • Jewellery • Style</p>
+.cart-top h2{
+  font-size:24px;
+}
 
-  <p>© 2026 All Rights Reserved</p>
+.cart-top button{
+  border:0;
+  background:none;
+  font-size:30px;
+  cursor:pointer;
+}
 
-</footer>
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  padding:18px 0;
+  border-bottom:1px solid #eee;
+}
 
+.remove{
+  border:0;
+  background:#eee;
+  padding:7px 10px;
+  cursor:pointer;
+}
 
-<script src="script.js"></script>
+.cart-bottom{
+  margin-top:auto;
+  border-top:1px solid #eee;
+  padding-top:20px;
+}
 
-</body>
-</html>
+.total{
+  font-size:18px;
+}
+
+.checkout{
+  width:100%;
+  margin-top:18px;
+  padding:15px;
+  background:#171717;
+  color:#fff;
+  border:0;
+  cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  header{
+    padding:0 4%;
+  }
+
+  .logo{
+    font-size:10px;
+  }
+
+  .hero{
+    min-height:500px;
+    padding:60px 7%;
+  }
+
+  .hero-text h1{
+    font-size:50px;
+  }
+
+  .section{
+    padding:60px 5%;
+  }
+
+  .categories{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .category{
+    min-height:130px;
+  }
+
+  .product-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product-photo{
+    height:200px;
+  }
+
+  .product-info{
+    padding:12px;
+  }
+
+}
