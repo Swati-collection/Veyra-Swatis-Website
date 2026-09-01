@@ -9,165 +9,178 @@
 
 <body>
 
-<header class="header">
-  <a href="#" class="logo">VEYRA <span>×</span> SWATI'S COLLECTION</a>
+<header>
+  <div class="logo">
+    VEYRA <span>×</span> SWATI'S COLLECTION
+  </div>
 
-  <button class="cart-btn" onclick="openCart()">
-    Cart <b id="cartCount">0</b>
+  <button class="cart-button" onclick="openCart()">
+    🛍️ Cart <span id="cartCount">0</span>
   </button>
 </header>
 
+
 <section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">NEW COLLECTION</p>
+
+  <div class="hero-text">
+
+    <small>VEYRA × SWATI'S COLLECTION</small>
 
     <h1>
-      Style that feels
-      <span>uniquely yours.</span>
+      Fashion that<br>
+      <i>defines you.</i>
     </h1>
 
     <p>
-      Discover stylish clothing and beautiful jewellery
-      curated for everyday elegance.
+      Discover our latest collection of clothing
+      and jewellery designed for your style.
     </p>
 
-    <a href="#shop" class="hero-btn">Shop Now</a>
+    <a href="#categories">EXPLORE COLLECTION</a>
+
   </div>
+
 </section>
 
-<main id="shop">
 
-  <!-- CLOTHING -->
+<section id="categories" class="section">
 
-  <section class="category-section">
-
+  <div class="title">
+    <p>SHOP BY CATEGORY</p>
     <h2>Clothing</h2>
+  </div>
 
-    <div class="category-grid">
+  <div class="categories">
 
-      <div class="category-card" onclick="showCategory('Suits')">
-        <div class="icon">👗</div>
-        <p>Suits</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Hoodies')">
-        <div class="icon">🧥</div>
-        <p>Hoodies</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('T-Shirts')">
-        <div class="icon">👕</div>
-        <p>T-Shirts</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Sweatshirts')">
-        <div class="icon">🧥</div>
-        <p>Sweatshirts</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Saree')">
-        <div class="icon">🥻</div>
-        <p>Saree</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Caps')">
-        <div class="icon">🧢</div>
-        <p>Caps</p>
-      </div>
-
+    <div onclick="showCategory('Suits')" class="category">
+      <span>👗</span>
+      <h3>Suits</h3>
     </div>
 
-  </section>
+    <div onclick="showCategory('Hoodies')" class="category">
+      <span>🧥</span>
+      <h3>Hoodies</h3>
+    </div>
+
+    <div onclick="showCategory('T-Shirts')" class="category">
+      <span>👕</span>
+      <h3>T-Shirts</h3>
+    </div>
+
+    <div onclick="showCategory('Sweatshirts')" class="category">
+      <span>🧥</span>
+      <h3>Sweatshirts</h3>
+    </div>
+
+    <div onclick="showCategory('Saree')" class="category">
+      <span>🥻</span>
+      <h3>Saree</h3>
+    </div>
+
+    <div onclick="showCategory('Caps')" class="category">
+      <span>🧢</span>
+      <h3>Caps</h3>
+    </div>
+
+  </div>
+
+</section>
 
 
-  <!-- JEWELLERY -->
+<section class="section jewellery-section">
 
-  <section class="category-section">
-
+  <div class="title">
+    <p>SHOP BY CATEGORY</p>
     <h2>Jewellery</h2>
+  </div>
 
-    <div class="category-grid">
+  <div class="categories">
 
-      <div class="category-card" onclick="showCategory('Necklace')">
-        <div class="icon">📿</div>
-        <p>Necklace</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Earrings')">
-        <div class="icon">💎</div>
-        <p>Earrings</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Rings')">
-        <div class="icon">💍</div>
-        <p>Rings</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Bracelets')">
-        <div class="icon">✨</div>
-        <p>Bracelets</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Bangles')">
-        <div class="icon">⭕</div>
-        <p>Bangles</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Mangalsutra')">
-        <div class="icon">📿</div>
-        <p>Mangalsutra</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Anklets')">
-        <div class="icon">✨</div>
-        <p>Anklets</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Nose Pins')">
-        <div class="icon">💠</div>
-        <p>Nose Pins</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Maang Tikka')">
-        <div class="icon">👑</div>
-        <p>Maang Tikka</p>
-      </div>
-
-      <div class="category-card" onclick="showCategory('Jewellery Sets')">
-        <div class="icon">💎</div>
-        <p>Jewellery Sets</p>
-      </div>
-
+    <div onclick="showCategory('Necklace')" class="category">
+      <span>📿</span>
+      <h3>Necklace</h3>
     </div>
 
-  </section>
-
-
-  <!-- PRODUCTS -->
-
-  <section class="products-section">
-
-    <div class="section-heading">
-
-      <div>
-        <h2>Our Products</h2>
-        <p>Product photos and prices will be added soon.</p>
-      </div>
-
+    <div onclick="showCategory('Earrings')" class="category">
+      <span>💎</span>
+      <h3>Earrings</h3>
     </div>
 
-    <div class="product-grid" id="productGrid"></div>
+    <div onclick="showCategory('Rings')" class="category">
+      <span>💍</span>
+      <h3>Rings</h3>
+    </div>
 
-  </section>
+    <div onclick="showCategory('Bracelets')" class="category">
+      <span>✨</span>
+      <h3>Bracelets</h3>
+    </div>
 
-</main>
+    <div onclick="showCategory('Bangles')" class="category">
+      <span>⭕</span>
+      <h3>Bangles</h3>
+    </div>
+
+    <div onclick="showCategory('Mangalsutra')" class="category">
+      <span>📿</span>
+      <h3>Mangalsutra</h3>
+    </div>
+
+    <div onclick="showCategory('Anklets')" class="category">
+      <span>✨</span>
+      <h3>Anklets</h3>
+    </div>
+
+    <div onclick="showCategory('Nose Pins')" class="category">
+      <span>💠</span>
+      <h3>Nose Pins</h3>
+    </div>
+
+    <div onclick="showCategory('Maang Tikka')" class="category">
+      <span>👑</span>
+      <h3>Maang Tikka</h3>
+    </div>
+
+    <div onclick="showCategory('Jewellery Sets')" class="category">
+      <span>💎</span>
+      <h3>Jewellery Sets</h3>
+    </div>
+
+  </div>
+
+</section>
 
 
-<!-- CART -->
+<section class="products section">
 
-<div class="cart-panel" id="cartPanel">
+  <div class="title">
+    <p>OUR COLLECTION</p>
+    <h2 id="productTitle">Featured Products</h2>
+  </div>
 
-  <div class="cart-header">
+  <div id="productGrid" class="product-grid"></div>
+
+</section>
+
+
+<footer>
+
+  <div class="footer-logo">
+    VEYRA × SWATI'S COLLECTION
+  </div>
+
+  <p>Fashion • Jewellery • Style</p>
+
+  <small>© 2026 All Rights Reserved</small>
+
+</footer>
+
+
+<div id="overlay" class="overlay" onclick="closeCart()"></div>
+
+<div id="cartPanel" class="cart-panel">
+
+  <div class="cart-top">
 
     <h2>Your Cart</h2>
 
@@ -177,35 +190,19 @@
 
   <div id="cartItems"></div>
 
-  <div class="cart-footer">
+  <div class="cart-bottom">
 
-    <strong>
-      Total: ₹<span id="cartTotal">0</span>
-    </strong>
+    <div class="total">
+      Total: ₹<strong id="cartTotal">0</strong>
+    </div>
 
-    <button class="checkout-btn" onclick="checkout()">
+    <button onclick="checkout()" class="checkout">
       Checkout
     </button>
 
   </div>
 
 </div>
-
-
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <h3>VEYRA × Swati's Collection</h3>
-
-  <p>Fashion • Jewellery • Style</p>
-
-  <p>© 2026 All Rights Reserved</p>
-
-</footer>
 
 
 <script src="script.js"></script>
